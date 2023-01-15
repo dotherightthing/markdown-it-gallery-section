@@ -92,7 +92,7 @@ class VueGalleryPlugin {
             imagesStr = imagesStr.replaceAll("\"", "'"); // use single quotes around property values
 
             // repurpose paragraph_open token
-            tokens[i - 1].content = `<${vueGalleryTag} id="${id}" title="${title}" :images="${imagesStr}"/>`;
+            tokens[i - 1].content = `<${this.options.vueGalleryTag} id="${id}" title="${title}" :images="${imagesStr}"/>`;
             tokens[i - 1].type = 'html_block';
 
             // repurpose paragraph_close token
