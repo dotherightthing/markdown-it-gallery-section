@@ -1,6 +1,6 @@
 /**
  * @file index.js
- * @summary markdown-it-vue-gallery, based on markdown-it-gallery
+ * @summary markdown-it-vuepress-gallery, based on markdown-it-gallery
  * @description A markdown-it plugin for wrapping a sequence of images with a custom Vue component.
  */
 

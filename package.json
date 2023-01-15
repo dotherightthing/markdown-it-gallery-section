@@ -1,5 +1,5 @@
 {
-  "name": "markdown-it-vue-gallery",
+  "name": "markdown-it-vuepress-gallery",
   "version": "1.0.0",
   "description": "A markdown-it plugin for wrapping a sequence of images with a custom Vue component.",
   "main": "index.js",
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dotherightthing/markdown-it-vue-gallery.git"
+    "url": "git+https://github.com/dotherightthing/markdown-it-vuepress-gallery.git"
   },
   "author": "dev@dotherightthing.co.nz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dotherightthing/markdown-it-vue-gallery/issues"
+    "url": "https://github.com/dotherightthing/markdown-it-vuepress-gallery/issues"
   },
-  "homepage": "https://github.com/dotherightthing/markdown-it-vue-gallery#readme"
+  "homepage": "https://github.com/dotherightthing/markdown-it-vuepress-gallery#readme"
 }
