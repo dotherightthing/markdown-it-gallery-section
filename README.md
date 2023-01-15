@@ -105,7 +105,10 @@ export default {
 
 #### Output HTML
 
+Note that the heading anchor is automatically added by VuePress.
+
 ```html
+<h2 id="heading-1" hidden="hidden"><a href="#heading-1" class="header-anchor">#</a> Heading 1</h2>
 <div class="gallery" id="gallery-0">
     <h2 id="heading-1">Heading 1</h2>
     <div class="gallery-items">
