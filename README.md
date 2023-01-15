@@ -87,7 +87,7 @@ export default {
   props: {
     alt: String,
     galleryId: String,
-    id: String,
+    id: Number,
     src: String
   }
 }
