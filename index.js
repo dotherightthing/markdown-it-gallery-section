@@ -70,18 +70,22 @@ class VueGalleryPlugin {
                     id: key,
                     src: child.attrGet('src')
                 });
+
+                child.hidden = true;
             });
 
             // title
             let title = this.title;
 
             if (this.options.titleFromPrecedingHeading) {
-                title = tokens[i - 3].content;
-
                 if (tokens[i - 4].type === 'heading_open') {
-                    // note: generated id (anchor) attribute is not present when this plugin runs
-                    // it is generated in the Vue component
-                    tokens[i - 4].attrSet('hidden', 'hidden');
+                    title = tokens[i - 3].content;
+
+                    if (tokens[i - 1].type === 'heading_close') {
+                        // note: generated id (anchor) attribute is not present when this plugin runs
+                        // it is generated in the Vue component
+                        tokens[i - 1].attrSet('hidden', 'hidden');
+                    }
                 }
             }
 
