@@ -18,6 +18,13 @@ class GalleryPlugin {
     }
 
     gallery(state) {
+        const {
+            galleryClass,
+            galleryTag,
+            title,
+            titleFromPrecedingHeading,
+        } = this.options;
+
         const tokens = state.tokens;
         const CHILD_TYPES = ['image', 'softbreak'];
         let galleryCount = 0;
@@ -51,7 +58,7 @@ class GalleryPlugin {
             const children = token.children.filter(t => t.type === 'image');
 
             // preceding element must be a heading in order to reuse the heading text within the gallery
-            if (this.options.titleFromPrecedingHeading) {
+            if (titleFromPrecedingHeading) {
                 if (tokens[i - 2].type !== 'heading_close') {
                     continue;
                 }
@@ -75,10 +82,7 @@ class GalleryPlugin {
                 child.hidden = true;
             });
 
-            // title
-            let title = this.title;
-
-            if (this.options.titleFromPrecedingHeading) {
+            if (titleFromPrecedingHeading) {
                 if (tokens[i - 4].type === 'heading_open') {
                     title = tokens[i - 3].content;
 
@@ -97,7 +101,7 @@ class GalleryPlugin {
             imagesStr = imagesStr.replaceAll("\"", "'"); // use single quotes around property values
 
             // repurpose paragraph_open token
-            tokens[i - 1].content = `<${this.options.galleryTag} class="${galleryClass}" id="${id}" title="${title}" :images="${imagesStr}"/>`;
+            tokens[i - 1].content = `<${galleryTag} class="${galleryClass}" id="${id}" title="${title}" :images="${imagesStr}"/>`;
             tokens[i - 1].type = 'html_block';
 
             // repurpose paragraph_close token
