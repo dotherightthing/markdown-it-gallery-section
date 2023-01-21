@@ -21,9 +21,10 @@ class GalleryPlugin {
         const {
             galleryClass,
             galleryTag,
-            title,
             titleFromPrecedingHeading,
         } = this.options;
+
+        let { title } = this.options;
 
         const tokens = state.tokens;
         const CHILD_TYPES = ['image', 'softbreak'];
