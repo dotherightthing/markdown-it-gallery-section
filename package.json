@@ -1,19 +1,19 @@
 {
-  "name": "markdown-it-vuepress-gallery",
+  "name": "markdown-it-gallery",
   "version": "1.0.0",
-  "description": "A markdown-it plugin for wrapping a sequence of images with a custom Vue component.",
+  "description": "A markdown-it plugin for wrapping a sequence of images with a tag or custom Vue component (for use with Vuepress)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dotherightthing/markdown-it-vuepress-gallery.git"
+    "url": "git+https://github.com/dotherightthing/markdown-it-gallery.git"
   },
   "author": "dev@dotherightthing.co.nz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dotherightthing/markdown-it-vuepress-gallery/issues"
+    "url": "https://github.com/dotherightthing/markdown-it-gallery/issues"
   },
-  "homepage": "https://github.com/dotherightthing/markdown-it-vuepress-gallery#readme"
+  "homepage": "https://github.com/dotherightthing/markdown-it-gallery#readme"
 }

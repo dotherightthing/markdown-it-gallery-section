@@ -1,6 +1,6 @@
-# markdown-it-vuepress-gallery
+# markdown-it-gallery
 
-A [markdown-it](https://github.com/markdown-it/markdown-it) plugin for wrapping a sequence of images with a custom Vue component. For use with Vuepress.
+A [markdown-it](https://github.com/markdown-it/markdown-it) plugin for wrapping a sequence of images with a tag or custom Vue component (for use with Vuepress).
 
 I find this preferable to using a Vue component directly in the Vuepress markdown file. Images are core content and should be visible when editing content in a pluggable IDE without requiring Vuepress for compilation.
 
@@ -12,11 +12,12 @@ Based on <https://github.com/amokrushin/markdown-it-gallery>.
 
 | Option                    | Type    | Default   | Description                                                                                 |
 |---------------------------|---------|-----------|---------------------------------------------------------------------------------------------|
+| galleryClass              | String  | ""        | CSS class hook for styling the gallery                                                      |
+| galleryTag                | String  | "Gallery" | Tag name (or name of the Vue component, authored separately)                                |
 | title                     | String  | ""        | Title to pass to the Vue Component                                                          |
 | titleFromPrecedingHeading | Boolean | true      | Reuse the title from the preceding sibling heading element (rather than providing a string) |
-| vueGalleryTag             | String  | "Gallery" | Name of the Vue component (authored separately)                                             |
 
-### Example
+### Example (Vuepress)
 
 ```js
 // .vuepress/config.js
@@ -24,7 +25,12 @@ Based on <https://github.com/amokrushin/markdown-it-gallery>.
 module.exports = {
   markdown: {
     extendMarkdown: md => {
-      md.use(require('markdown-it-vuepress-gallery'))
+      md.use(require('markdown-it-gallery'), {
+        galleryClass: '',
+        galleryTag: 'Gallery',
+        title: '',
+        titleFromPrecedingHeading: true,
+      })
     }
   }
 }

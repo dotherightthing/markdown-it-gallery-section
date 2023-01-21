@@ -1,16 +1,17 @@
 /**
  * @file index.js
- * @summary markdown-it-vuepress-gallery, based on markdown-it-gallery
- * @description A markdown-it plugin for wrapping a sequence of images with a custom Vue component.
+ * @summary markdown-it-gallery
+ * @description A markdown-it plugin for wrapping a sequence of images with a tag or custom Vue component.
  */
 
-class VueGalleryPlugin {
+class GalleryPlugin {
     constructor(md, options) {
         this.md = md;
         this.options = Object.assign({
-          title: '',
-          titleFromPrecedingHeading: true,
-          vueGalleryTag: 'Gallery',
+            galleryClass: '',
+            galleryTag: 'Gallery',
+            title: '',
+            titleFromPrecedingHeading: true,
         }, options);
 
         md.core.ruler.after('inline', 'gallery', this.gallery.bind(this));
@@ -96,7 +97,7 @@ class VueGalleryPlugin {
             imagesStr = imagesStr.replaceAll("\"", "'"); // use single quotes around property values
 
             // repurpose paragraph_open token
-            tokens[i - 1].content = `<${this.options.vueGalleryTag} id="${id}" title="${title}" :images="${imagesStr}"/>`;
+            tokens[i - 1].content = `<${this.options.galleryTag} class="${galleryClass}" id="${id}" title="${title}" :images="${imagesStr}"/>`;
             tokens[i - 1].type = 'html_block';
 
             // repurpose paragraph_close token
@@ -106,4 +107,4 @@ class VueGalleryPlugin {
     }
 }
 
-module.exports = (md, options = {}) => new VueGalleryPlugin(md, options);
+module.exports = (md, options = {}) => new GalleryPlugin(md, options);
