@@ -58,6 +58,7 @@ module.exports = {
 import GalleryItem from "./GalleryItem";
 
 export default {
+  name: 'Gallery',
   computed: {
     titleId() {
       return this.stringToId(this.title);
@@ -90,6 +91,7 @@ export default {
 
 <script>
 export default {
+  name: 'GalleryItem',
   props: {
     alt: String,
     galleryId: String,
