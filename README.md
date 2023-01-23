@@ -1,21 +1,31 @@
 # markdown-it-gallery
 
-A [markdown-it](https://github.com/markdown-it/markdown-it) plugin for wrapping a sequence of images with a tag or custom Vue component (for use with Vuepress).
+A [markdown-it](https://github.com/markdown-it/markdown-it) plugin, predominately for use with Vuepress.
 
-I find this preferable to using a Vue component directly in the Vuepress markdown file. Images are core content and should be visible when editing content in a pluggable IDE without requiring Vuepress for compilation.
+Features:
 
-Based on <https://github.com/amokrushin/markdown-it-gallery>.
+1. subdivides content into sections (tag or custom Vue component)
+   * I find this preferable to manually adding [Markdown slots](https://vuepress.vuejs.org/guide/markdown-slot.html), plus the tag can be used to inject a Vue component.
+2. wraps adjacent heading and images in a gallery (tag or custom Vue component)
+   * I find this preferable to using a Vue component directly in the Vuepress markdown file. Images are core content and should be visible when editing content in a pluggable IDE without requiring Vuepress for compilation.
+
+Initially this was two separate plugins, but as these fought one another in the markup order I took the path of least resistance and combined them.
+
+Code based on <https://github.com/amokrushin/markdown-it-gallery>.
 
 ## Usage
 
 ### Options
 
-| Option                    | Type    | Default   | Description                                                                                 |
-|---------------------------|---------|-----------|---------------------------------------------------------------------------------------------|
-| galleryClass              | String  | ""        | CSS class hook for styling the gallery                                                      |
-| galleryTag                | String  | "Gallery" | Tag name (or name of the Vue component, authored separately)                                |
-| title                     | String  | ""        | Title to pass to the Vue Component                                                          |
-| titleFromPrecedingHeading | Boolean | true      | Reuse the title from the preceding sibling heading element (rather than providing a string) |
+| Option              | Type    | Default          | Description                                                  |
+|---------------------|---------|------------------|--------------------------------------------------------------|
+| contentWrapperClass | String  | "entry-content"  | CSS class hook for styling the content following the gallery |
+| contentWrapperTag   | String  | "div"            | Tag name (or name of the Vue component, authored separately) |
+| galleryClass        | String  | ""               | CSS class hook for styling the gallery                       |
+| galleryTag          | String  | "Gallery"        | Tag name (or name of the Vue component, authored separately) |
+| headingLevel        | String  | "h2"             | Heading Level which appears before a sequence of images      |
+| sectionClass        | String  | ""               | CSS class hook for styling the section                       |
+| sectionTag          | String  | "ContentSection" | Tag name (or name of the Vue component, authored separately) |
 
 ### Example (Vuepress)
 
@@ -26,10 +36,13 @@ module.exports = {
   markdown: {
     extendMarkdown: md => {
       md.use(require('markdown-it-gallery'), {
+        contentWrapperClass: 'entry-content',
+        contentWrapperTag: 'div',
         galleryClass: '',
         galleryTag: 'Gallery',
-        title: '',
-        titleFromPrecedingHeading: true,
+        headingLevel: 'h2',
+        sectionClass: '', 
+        sectionTag: 'ContentSection'
       })
     }
   }
@@ -37,21 +50,43 @@ module.exports = {
 ```
 
 ```vue
+// .vuepress/components/ContentSection.vue (simplified example)
+// Note: headingContent could be used to programmatically link the section to the contained headingLevel
+
+<template>
+  <div class="content-section" :data-heading-content="headingContent">
+    <slot/>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ContentSection',
+  props: {
+    headingContent: String
+  }
+}
+</script>
+```
+
+```vue
 // .vuepress/components/Gallery.vue (simplified example)
 
 <template>
-    <div class="gallery" :id="'gallery-' + id">
-        <h2 :id="titleId">{{ title }}</h2>
-        <div class="gallery-items">
-            <GalleryItem v-for="(item,key) in images"
-                :src="item.src"
-                :alt="item.alt"
-                :galleryId="id"
-                :id="item.id"
-                :key="key"
-            />
-        </div>
+  <div class="gallery" :id="'gallery-' + id">
+    <div class="gallery-header">
+      <slot/>
     </div>
+    <div class="gallery-items">
+      <GalleryItem v-for="(item,key) in images"
+        :src="item.src"
+        :alt="item.alt"
+        :galleryId="id"
+        :id="item.id"
+        :key="key"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -105,10 +140,12 @@ export default {
 #### Input markdown
 
 ```md
-## Heading 1
+## Heading 2.1
 
 ![Gallery Image 1](http://example.com/image-1.jpg)
 ![Gallery Image 2](http://example.com/image-2.jpg)
+
+Lorem ipsum dolor sit amet.
 ```
 
 #### Output HTML
@@ -116,12 +153,18 @@ export default {
 Note that the heading anchor is automatically added by VuePress.
 
 ```html
-<h2 id="heading-1" hidden="hidden"><a href="#heading-1" class="header-anchor">#</a> Heading 1</h2>
-<div class="gallery" id="gallery-0">
-    <h2 id="heading-1">Heading 1</h2>
-    <div class="gallery-items">
-        <img src="http://example.com/image-1.jpg" class="gallery-image" alt="Gallery Image 1" id="gallery-0-image-0" width="300" height="300">
-        <img src="http://example.com/image-2.jpg" class="gallery-image" alt="Gallery Image 2" id="gallery-0-image-1" width="300" height="300">
-    </div>
+<div class="content-section" data-heading-content="Heading 2.1">
+  <div class="gallery" id="gallery-0">
+      <div class="gallery-header">
+        <h2 id="heading-2-1">Heading 2.1</h2>
+      </div>
+      <div class="gallery-items">
+          <img src="http://example.com/image-1.jpg" class="gallery-image" alt="Gallery Image 1" id="gallery-0-image-0" width="300" height="300">
+          <img src="http://example.com/image-2.jpg" class="gallery-image" alt="Gallery Image 2" id="gallery-0-image-1" width="300" height="300">
+      </div>
+  </div>
+  <div class="entry-content">
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
 </div>
 ```
