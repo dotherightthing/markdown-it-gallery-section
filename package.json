@@ -1,19 +1,19 @@
 {
-  "name": "markdown-it-gallery",
+  "name": "markdown-it-gallery-section",
   "version": "1.0.0",
-  "description": "A markdown-it plugin for wrapping a sequence of images with a tag or custom Vue component (for use with Vuepress)",
+  "description": "A markdown-it plugin for sectioning content and creating image galleries, primarily for use with a custom Vuepress theme.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dotherightthing/markdown-it-gallery.git"
+    "url": "git+https://github.com/dotherightthing/markdown-it-gallery-section.git"
   },
   "author": "dev@dotherightthing.co.nz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dotherightthing/markdown-it-gallery/issues"
+    "url": "https://github.com/dotherightthing/markdown-it-gallery-section/issues"
   },
-  "homepage": "https://github.com/dotherightthing/markdown-it-gallery#readme"
+  "homepage": "https://github.com/dotherightthing/markdown-it-gallery-section#readme"
 }

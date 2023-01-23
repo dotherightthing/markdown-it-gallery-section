@@ -1,6 +1,6 @@
-# markdown-it-gallery
+# markdown-it-gallery-section
 
-A [markdown-it](https://github.com/markdown-it/markdown-it) plugin, predominately for use with Vuepress.
+A [markdown-it](https://github.com/markdown-it/markdown-it) plugin for sectioning content and creating image galleries, primarily for use with a custom Vuepress theme.
 
 Features:
 
@@ -8,10 +8,12 @@ Features:
    * I find this preferable to manually adding [Markdown slots](https://vuepress.vuejs.org/guide/markdown-slot.html), plus the tag can be used to inject a Vue component.
 2. wraps adjacent heading and images in a gallery (tag or custom Vue component)
    * I find this preferable to using a Vue component directly in the Vuepress markdown file. Images are core content and should be visible when editing content in a pluggable IDE without requiring Vuepress for compilation.
+3. wraps remaining content in a content wrapper
+   * to facilitate grid layouts
 
-Initially this was two separate plugins, but as these fought one another in the markup order I took the path of least resistance and combined them.
+Initially this was two separate plugins (markdown-it-gallery and markdown-it-section), but as these fought one another in the markup order I took the path of least resistance and combined them.
 
-Code based on <https://github.com/amokrushin/markdown-it-gallery>.
+Code based on <https://github.com/amokrushin/markdown-it-gallery-section>.
 
 ## Usage
 
@@ -35,7 +37,7 @@ Code based on <https://github.com/amokrushin/markdown-it-gallery>.
 module.exports = {
   markdown: {
     extendMarkdown: md => {
-      md.use(require('markdown-it-gallery'), {
+      md.use(require('markdown-it-gallery-section'), {
         contentWrapperClass: 'entry-content',
         contentWrapperTag: 'div',
         galleryClass: '',

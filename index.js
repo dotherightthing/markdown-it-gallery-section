@@ -1,6 +1,6 @@
 /**
  * @file index.js
- * @summary markdown-it-gallery
+ * @summary markdown-it-gallery-section
  * @description A markdown-it plugin for wrapping a sequence of images with a tag or custom Vue component.
  */
 
