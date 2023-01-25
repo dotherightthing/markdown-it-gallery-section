@@ -80,7 +80,7 @@ export default {
       <slot/>
     </div>
     <div class="gallery-items">
-      <GalleryItem v-for="(item,key) in images"
+      <GalleryThumbnail v-for="(item,key) in images"
         :src="item.src"
         :alt="item.alt"
         :galleryId="id"
@@ -92,7 +92,7 @@ export default {
 </template>
 
 <script>
-import GalleryItem from "./GalleryItem";
+import GalleryThumbnail from "./GalleryThumbnail";
 
 export default {
   name: 'Gallery',
@@ -120,7 +120,7 @@ export default {
 ```
 
 ```vue
-// .vuepress/components/GalleryItem.vue (simplified example)
+// .vuepress/components/GalleryThumbnail.vue (simplified example)
 
 <template>
     <img :src="src" class="gallery-image" :alt="alt" :id="'gallery-' + galleryId + '-image-' + id" width="300" height="300">
@@ -128,7 +128,7 @@ export default {
 
 <script>
 export default {
-  name: 'GalleryItem',
+  name: 'GalleryThumbnail',
   props: {
     alt: String,
     galleryId: String,
