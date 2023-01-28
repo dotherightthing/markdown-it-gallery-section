@@ -84,11 +84,15 @@ class GalleryPlugin {
         const galleryTokenClose = new state.Token('html_block', '', level);
         
         const childImageTokensObj = childImageTokens.map((token, key) => {
+            const [ src, hash ] = token.attrGet('src').split('#');
+            const extraAttributes = this.getAttributesFromHash(hash);
+
             return {
                 alt: token.content.replaceAll('\'', 'ʼ'),
                 caption: token.attrGet('title').replaceAll('\'', 'ʼ'),
+                extraAttributes,
                 id: key,
-                src: token.attrGet('src'),
+                src,
             } 
         });
 
@@ -98,6 +102,30 @@ class GalleryPlugin {
         galleryTokenClose.content = `</${galleryTag}>`;
 
         return [galleryTokenOpen, galleryTokenClose];
+    }
+
+    /**
+     * @function getAttributesFromHash (foo.jpg#attr1=val1&attr2=val2)
+     * @param {String} hash
+     * @returns {Object} attrs
+     * @see {@link https://stackoverflow.com/a/22683624} - add an 'useless' hash to the URL
+     * @see {@link https://stackoverflow.com/a/26119120} - The fragment identifier component can contain
+     */
+    getAttributesFromHash(hash) {
+        let attrs = {};
+
+        if (typeof hash === 'string') {
+            const hashParts = hash.split('&');
+
+
+            hashParts.forEach(part => {
+                const [ key, val ] = part.split('=');
+
+                attrs[key] = val;
+            });
+        }
+
+        return attrs;
     }
 
     /**
