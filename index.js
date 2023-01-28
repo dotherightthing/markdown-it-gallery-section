@@ -66,6 +66,9 @@ class GalleryPlugin {
      * @param {Object} gallery
      * @param {Number} index
      * @returns {Array} [galleryTokenOpen, galleryTokenClose]
+     * @see {@link https://tedclancy.wordpress.com/2015/06/03/which-unicode-character-should-represent-the-english-apostrophe-and-why-the-unicode-committee-is-very-wrong/}
+     * @see {@link https://unicodeplus.com/U+02BC}
+     * @see {@link https://thesynack.com/posts/markdown-captions/} - Hijacking alt or title attributes
      */
     createGalleryTokens(state, level, gallery, index) {
         const {
@@ -82,9 +85,10 @@ class GalleryPlugin {
         
         const childImageTokensObj = childImageTokens.map((token, key) => {
             return {
-                alt: token.content,
+                alt: token.content.replaceAll('\'', 'ʼ'),
+                caption: token.attrGet('title').replaceAll('\'', 'ʼ'),
                 id: key,
-                src: token.attrGet('src')
+                src: token.attrGet('src'),
             } 
         });
 
