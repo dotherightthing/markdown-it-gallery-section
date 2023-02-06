@@ -89,7 +89,7 @@ class GalleryPlugin {
 
             return {
                 alt: token.content.replaceAll('\'', 'ʼ'),
-                caption: token.attrGet('title').replaceAll('\'', 'ʼ'),
+                caption: token.attrGet('title') ? token.attrGet('title').replaceAll('\'', 'ʼ') : '',
                 extraAttributes,
                 id: key,
                 src,
