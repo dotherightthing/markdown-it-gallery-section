@@ -13,6 +13,8 @@ class GalleryPlugin {
             galleryClass: '',
             galleryTag: 'Gallery',
             headingLevel: 'h2',
+            imagePathOld: '/.vuepress/public/images/original',
+            imagePathNew: '/images',
             sectionClass: '', 
             sectionTag: 'ContentSection'
         }, options);
@@ -96,12 +98,23 @@ class GalleryPlugin {
             } 
         });
 
-        const galleryImagesAttrStr = this.arrayToAttrString(childImageTokensObj);
+        let galleryImagesAttrStr = this.arrayToAttrString(childImageTokensObj);
 
+        galleryImagesAttrStr = this.replaceImagePaths(`src:'`, galleryImagesAttrStr);
         galleryTokenOpen.content = `<${galleryTag} class="${galleryClass}" id="${index}" :images="${galleryImagesAttrStr}">`;
         galleryTokenClose.content = `</${galleryTag}>`;
 
         return [galleryTokenOpen, galleryTokenClose];
+    }
+
+    /**
+     * @function escapeRegExp
+     * @param {String} string 
+     * @returns {String}
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping}
+     */
+    escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
     }
 
     /**
@@ -176,6 +189,31 @@ class GalleryPlugin {
         const insertPosition = state.tokens.indexOf(oldToken);
 
         state.tokens.splice(insertPosition, 0, newToken);
+    }
+
+    /**
+     * @function replaceImagePaths
+     * @summary Replace old image path with new
+     * @param {String} prefix 
+     * @param {String} string
+     * @returns {String}
+     */
+    replaceImagePaths(prefix, string) {
+        const {
+            imagePathOld,
+            imagePathNew,
+        } = this.options;
+
+        if (imagePathOld === '') {
+            return string;
+        }
+
+        const imagePathOldRe = this.escapeRegExp(imagePathOld);
+        const imagePathReplace = new RegExp(`${prefix}[./]+${imagePathOldRe}`, 'g');
+
+        string = string.replace(imagePathReplace, `${prefix}${imagePathNew}`);
+
+        return string;
     }
 
     /**
