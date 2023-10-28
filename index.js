@@ -213,6 +213,9 @@ class GalleryPlugin {
 
         string = string.replace(imagePathReplace, `${prefix}${imagePathNew}`);
 
+        // where an image filename contains an encoded space, encode the % character when requesting that file
+        string = string.replace(/\%20/g, '%2520'); // #3
+
         return string;
     }
 
