@@ -1,0 +1,27 @@
+re-encode encoded space in filename
+.
+## Itchy feet
+
+![Image description.](/images/tourdiaries/east-asia/china-1/01/21801663834_2bbcfd8382_o%20-%20.jpg "Image caption.")
+
+Section text.
+.
+<ContentSection class="" headingContent="Itchy feet"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/east-asia/china-1/01/21801663834_2bbcfd8382_o%2520-%2520.jpg'}]"><h2>Itchy feet</h2>
+</Gallery><div class="entry-content"></p>
+<p>Section text.</p>
+</div></ContentSection>
+.
+
+replace relative paths
+.
+## Itchy feet
+
+![Image description.](../../../../.vuepress/public/images/tourdiaries/east-asia/china-1/01/image.jpg "Image caption.")
+
+Section text.
+.
+<ContentSection class="" headingContent="Itchy feet"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/east-asia/china-1/01/image.jpg'}]"><h2>Itchy feet</h2>
+</Gallery><div class="entry-content"></p>
+<p>Section text.</p>
+</div></ContentSection>
+.

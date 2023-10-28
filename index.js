@@ -13,7 +13,7 @@ class GalleryPlugin {
             galleryClass: '',
             galleryTag: 'Gallery',
             headingLevel: 'h2',
-            imagePathOld: '../../../../.vuepress/public/images',
+            imagePathOld: '/.vuepress/public/images', // note: this is root relative - any leading ../ must be excluded here, these will be replaced regardless
             imagePathNew: '/images',
             sectionClass: '', 
             sectionTag: 'ContentSection'
@@ -193,9 +193,9 @@ class GalleryPlugin {
 
     /**
      * @function replaceImagePaths
-     * @summary Replace old image path with new
-     * @param {String} prefix - e.g. `src:'`
-     * @param {String} string - array of images as an attribute string
+     * @summary Replace page relative image path (for offline markdown editing) with root relative path (for vuepress)
+     * @param {String} prefix - attribute prefix, e.g. `src:'`
+     * @param {String} string - array of image paths as an attribute string
      * @returns {String}
      */
     replaceImagePaths(prefix, string) {
@@ -208,8 +208,14 @@ class GalleryPlugin {
             return string;
         }
 
-        const imagePathOldRe = this.escapeRegExp(imagePathOld);
-        const imagePathReplace = new RegExp(`${prefix}[./]+${imagePathOldRe}`, 'g');
+        // allow leading slash to indicate root
+        const imagePathOldPathless = (imagePathOld[0] === '/') ? imagePathOld.slice(1) : imagePathOld;
+
+        const imagePathOldRe = this.escapeRegExp(imagePathOldPathless);
+
+        // search across all image paths (lastIndexOf would only get the last image)
+        // (\.\.\/)+$ = one or more of ../
+        const imagePathReplace = new RegExp(`${prefix}(\.\.\/)+${imagePathOldRe}`, 'g');
 
         string = string.replace(imagePathReplace, `${prefix}${imagePathNew}`);
 
