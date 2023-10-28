@@ -1,26 +1,70 @@
-re-encode encoded space in filename
+Re-encode encoded space in filename
 .
-## Itchy feet
+## Section heading
 
-![Image description.](/images/tourdiaries/east-asia/china-1/01/21801663834_2bbcfd8382_o%20-%20.jpg "Image caption.")
+![Image description.](/images/tourdiaries/tour-name/leg-name/01/image%20-%20cropped.jpg "Image caption.")
 
 Section text.
 .
-<ContentSection class="" headingContent="Itchy feet"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/east-asia/china-1/01/21801663834_2bbcfd8382_o%2520-%2520.jpg'}]"><h2>Itchy feet</h2>
+<ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image%2520-%2520cropped.jpg'}]"><h2>Section heading</h2>
 </Gallery><div class="entry-content"></p>
 <p>Section text.</p>
 </div></ContentSection>
 .
 
-replace relative paths
+Replace relative paths
 .
-## Itchy feet
+## Section heading
 
-![Image description.](../../../../.vuepress/public/images/tourdiaries/east-asia/china-1/01/image.jpg "Image caption.")
+![Image description.](../../../../.vuepress/public/images/tourdiaries/tour-name/leg-name/01/image.jpg "Image caption.")
 
 Section text.
 .
-<ContentSection class="" headingContent="Itchy feet"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/east-asia/china-1/01/image.jpg'}]"><h2>Itchy feet</h2>
+<ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image.jpg'}]"><h2>Section heading</h2>
+</Gallery><div class="entry-content"></p>
+<p>Section text.</p>
+</div></ContentSection>
+.
+
+Encode focalpoint-multi-cropper suffix
+.
+## Section heading
+
+![Image description.](../../../../.vuepress/public/images/tourdiaries/tour-name/leg-name/01/image__[25%,75%].jpg "Image caption.")
+
+Section text.
+.
+<ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image__%5B25%25,75%25%5D.jpg'}]"><h2>Section heading</h2>
+</Gallery><div class="entry-content"></p>
+<p>Section text.</p>
+</div></ContentSection>
+.
+
+Handle two images
+.
+## Section heading
+
+![Image 1 description.](../../../../.vuepress/public/images/tourdiaries/tour-name/leg-name/01/image-1.jpg "Image 1 caption.")
+![Image 2 description.](../../../../.vuepress/public/images/tourdiaries/tour-name/leg-name/01/image-2.jpg "Image 2 caption.")
+
+Section text.
+.
+<ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image 1 description.',caption:'Image 1 caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image-1.jpg'},{alt:'Image 2 description.',caption:'Image 2 caption.',extraAttributes:{},id:1,src:'/images/tourdiaries/tour-name/leg-name/01/image-2.jpg'}]"><h2>Section heading</h2>
+</Gallery><div class="entry-content">
+</p>
+<p>Section text.</p>
+</div></ContentSection>
+.
+
+Generate extraAttributes for panorama
+.
+## Section heading
+
+![Image description.](../../../../.vuepress/public/images/tourdiaries/tour-name/leg-name/01/image.jpg#panorama=true "Image caption.")
+
+Section text.
+.
+<ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{panorama:'true'},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image.jpg'}]"><h2>Section heading</h2>
 </Gallery><div class="entry-content"></p>
 <p>Section text.</p>
 </div></ContentSection>

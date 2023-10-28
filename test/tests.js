@@ -35,7 +35,7 @@ function generate(path, options, md) {
   });
 }
 
-describe('tests', (assert) => {
+describe('Tests', (assert) => {
   const md = require('markdown-it')()
     .use(require('../'), 'name');
 
