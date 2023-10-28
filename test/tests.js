@@ -42,6 +42,7 @@ describe('tests', (assert) => {
     generate(
       path.join(__dirname, 'fixtures/tests.txt'),
       {
+        header: true,
         stripTrailingLineBreakFromFixtureHtml: true
       },
       md
