@@ -13,7 +13,7 @@ Features:
 
 Initially this was two separate plugins (markdown-it-gallery and markdown-it-section), but as these fought one another in the markup order I took the path of least resistance and combined them.
 
-Code based on <https://github.com/amokrushin/markdown-it-gallery-section>.
+Code based on <https://github.com/amokrushin/markdown-it-gallery>.
 
 ## Usage
 
