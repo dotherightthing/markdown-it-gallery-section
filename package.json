@@ -4,6 +4,7 @@
   "description": "A markdown-it plugin for sectioning content and creating image galleries, primarily for use with a custom Vuepress theme.",
   "main": "index.js",
   "scripts": {
+    "doc": "jsdoc2md --template jsdoc2md/README.hbs index.js > README.md",
     "test": "mocha test/*.js --inline-diffs"
   },
   "repository": {
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/dotherightthing/markdown-it-gallery-section#readme",
   "devDependencies": {
     "assign": "^0.1.7",
+    "jsdoc-to-markdown": "^8.0.0",
     "markdown-it": "^13.0.2",
     "markdown-it-testgen": "^0.1.6",
     "mocha": "^10.2.0"

@@ -4,6 +4,19 @@
  * @description A markdown-it plugin for wrapping a sequence of images with a tag or custom Vue component.
  */
 
+/**
+ * @class GalleryPlugin
+ * @summary Injects Vue gallery scaffolding into markdown
+ * @param {object} options - Instance options
+ * @param {string} [options.contentWrapperClass=entry-content] - CSS class hook for styling the content following the gallery
+ * @param {string} [options.contentWrapperTag=div] - Tag name (or name of the Vue component, authored separately)
+ * @param {string} [options.galleryClass=] - CSS class hook for styling the gallery
+ * @param {string} [options.galleryTag=Gallery] - Tag name (or name of the Vue component, authored separately)
+ * @param {string} [options.headingLevel=h2] - Heading Level which appears before a sequence of images)
+ * @param {string} [options.sectionClass=] - CSS class hook for styling the section
+ * @param {string} [options.sectionTag=ContentSection] - Tag name (or name of the Vue component, authored separately)
+ * @public
+ */
 class GalleryPlugin {
     constructor(md, options) {
         this.md = md;
@@ -29,6 +42,7 @@ class GalleryPlugin {
      * @param {Array} arr
      * @returns {String} arrStr
      * @see {@link https://stackoverflow.com/a/64049986}
+     * @private
      */
     arrayToAttrString(arr) {
         let arrStr = JSON.stringify(arr);
@@ -45,6 +59,7 @@ class GalleryPlugin {
      * @param {Object} state
      * @param {Number} level
      * @returns {Array} [contentWrapperTokenOpen, contentWrapperTokenClose]
+     * @private
      */
     createContentWrapperTokens(state, level) {
         const {
@@ -71,6 +86,7 @@ class GalleryPlugin {
      * @see {@link https://tedclancy.wordpress.com/2015/06/03/which-unicode-character-should-represent-the-english-apostrophe-and-why-the-unicode-committee-is-very-wrong/}
      * @see {@link https://unicodeplus.com/U+02BC}
      * @see {@link https://thesynack.com/posts/markdown-captions/} - Hijacking alt or title attributes
+     * @private
      */
     createGalleryTokens(state, level, gallery, index) {
         const {
@@ -112,6 +128,7 @@ class GalleryPlugin {
      * @param {String} string 
      * @returns {String}
      * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping} - If you need to use any of the special characters literally (actually searching for a "*", for instance), you must escape it by putting a backslash in front of it.
+     * @private
      */
     escapeRegExp(string) {
         return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
@@ -123,6 +140,7 @@ class GalleryPlugin {
      * @returns {Object} attrs
      * @see {@link https://stackoverflow.com/a/22683624} - add an 'useless' hash to the URL
      * @see {@link https://stackoverflow.com/a/26119120} - The fragment identifier component can contain
+     * @private
      */
     getAttributesFromHash(hash) {
         let attrs = {};
@@ -147,6 +165,7 @@ class GalleryPlugin {
      * @param {Number} level
      * @param {Object} gallery
      * @returns {Array} [sectionTokenOpen, sectionTokenClose]
+     * @private
      */
     createSectionTokens(state, level, gallery) {
         const {
@@ -172,6 +191,7 @@ class GalleryPlugin {
      * @param {Object} state
      * @param {Object} oldToken
      * @param {Object} newToken
+     * @private
      */
     insertTokenAfter(state, oldToken, newToken) {
         const insertPosition = state.tokens.indexOf(oldToken) + 1;
@@ -184,6 +204,7 @@ class GalleryPlugin {
      * @param {Object} state
      * @param {Object} oldToken
      * @param {Object} newToken
+     * @private
      */
     insertTokenBefore(state, oldToken, newToken) {
         const insertPosition = state.tokens.indexOf(oldToken);
@@ -197,6 +218,7 @@ class GalleryPlugin {
      * @param {String} prefix - attribute prefix, e.g. `src:'`
      * @param {String} string - array of image paths as an attribute string
      * @returns {String}
+     * @private
      */
     replaceImagePaths(prefix, string) {
         const {
@@ -228,6 +250,7 @@ class GalleryPlugin {
     /**
      * @function gallery
      * @param {Object} state
+     * @private
      */
     gallery(state) {
         const {
