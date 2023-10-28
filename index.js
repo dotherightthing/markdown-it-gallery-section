@@ -13,7 +13,7 @@ class GalleryPlugin {
             galleryClass: '',
             galleryTag: 'Gallery',
             headingLevel: 'h2',
-            imagePathOld: '/.vuepress/public/images/original',
+            imagePathOld: '../../../../.vuepress/public/images',
             imagePathNew: '/images',
             sectionClass: '', 
             sectionTag: 'ContentSection'
