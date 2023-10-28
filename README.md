@@ -21,7 +21,7 @@ Code based on <https://github.com/amokrushin/markdown-it-gallery-section>.
 
 ## GalleryPlugin
 **Kind**: global class  
-**Summary**: Injects Vue gallery scaffolding into markdown  
+**Summary**: Injects Vue gallery scaffolding into markdown and transforms file-relative image paths to server-root-relative image paths  
 **Access**: public  
 <a name="new_GalleryPlugin_new"></a>
 

@@ -6,7 +6,7 @@
 
 /**
  * @class GalleryPlugin
- * @summary Injects Vue gallery scaffolding into markdown
+ * @summary Injects Vue gallery scaffolding into markdown and transforms file-relative image paths to server-root-relative image paths
  * @param {object} options - Instance options
  * @param {string} [options.contentWrapperClass=entry-content] - CSS class hook for styling the content following the gallery
  * @param {string} [options.contentWrapperTag=div] - Tag name (or name of the Vue component, authored separately)
