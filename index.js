@@ -13,6 +13,8 @@
  * @param {string} [options.galleryClass=] - CSS class hook for styling the gallery
  * @param {string} [options.galleryTag=Gallery] - Tag name (or name of the Vue component, authored separately)
  * @param {string} [options.headingLevel=h2] - Heading Level which appears before a sequence of images)
+ * @param {string} [options.imagePathOld=/.vuepress/public/images] - Root relative directory path to images folder (within site folder)
+ * @param {string} [options.imagePathNew=/images] - Root relative server path to images folder
  * @param {string} [options.sectionClass=] - CSS class hook for styling the section
  * @param {string} [options.sectionTag=ContentSection] - Tag name (or name of the Vue component, authored separately)
  * @public
@@ -26,7 +28,7 @@ class GalleryPlugin {
             galleryClass: '',
             galleryTag: 'Gallery',
             headingLevel: 'h2',
-            imagePathOld: '/.vuepress/public/images', // note: this is root relative - any leading ../ must be excluded here, these will be replaced regardless
+            imagePathOld: '/.vuepress/public/images', // note: any leading ../ must be excluded here, these will be replaced regardless
             imagePathNew: '/images',
             sectionClass: '', 
             sectionTag: 'ContentSection'

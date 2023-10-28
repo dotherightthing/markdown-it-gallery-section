@@ -35,6 +35,8 @@ Code based on <https://github.com/amokrushin/markdown-it-gallery-section>.
 | [options.galleryClass=] | <code>string</code> |  | CSS class hook for styling the gallery |
 | [options.galleryTag] | <code>string</code> | <code>&quot;Gallery&quot;</code> | Tag name (or name of the Vue component, authored separately) |
 | [options.headingLevel] | <code>string</code> | <code>&quot;h2&quot;</code> | Heading Level which appears before a sequence of images) |
+| [options.imagePathOld] | <code>string</code> | <code>&quot;/.vuepress/public/images&quot;</code> | Root relative directory path to images folder (within site folder) |
+| [options.imagePathNew] | <code>string</code> | <code>&quot;/images&quot;</code> | Root relative server path to images folder |
 | [options.sectionClass=] | <code>string</code> |  | CSS class hook for styling the section |
 | [options.sectionTag] | <code>string</code> | <code>&quot;ContentSection&quot;</code> | Tag name (or name of the Vue component, authored separately) |
 
