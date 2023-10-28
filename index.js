@@ -111,7 +111,7 @@ class GalleryPlugin {
      * @function escapeRegExp
      * @param {String} string 
      * @returns {String}
-     * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping}
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping} - If you need to use any of the special characters literally (actually searching for a "*", for instance), you must escape it by putting a backslash in front of it.
      */
     escapeRegExp(string) {
         return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
@@ -194,8 +194,8 @@ class GalleryPlugin {
     /**
      * @function replaceImagePaths
      * @summary Replace old image path with new
-     * @param {String} prefix 
-     * @param {String} string
+     * @param {String} prefix - e.g. `src:'`
+     * @param {String} string - array of images as an attribute string
      * @returns {String}
      */
     replaceImagePaths(prefix, string) {
