@@ -239,9 +239,11 @@ class GalleryPlugin {
 
         // search across all image paths (lastIndexOf would only get the last image)
         // (\.\.\/)+$ = one or more of ../
-        const imagePathReplace = new RegExp(`${prefix}(\.\.\/)+${imagePathOldRe}`, 'g');
+        const nestedPagePathReplace = new RegExp(`${prefix}(\.\.\/)*${imagePathOldRe}`, 'g');
+        const rootPagePathReplace = new RegExp(`${prefix}(\/)+${imagePathOldRe}`, 'g');
 
-        string = string.replace(imagePathReplace, `${prefix}${imagePathNew}`);
+        string = string.replace(nestedPagePathReplace, `${prefix}${imagePathNew}`);
+        string = string.replace(rootPagePathReplace, `${prefix}${imagePathNew}`);
 
         // where an image filename contains an encoded space, encode the % character when requesting that file
         string = string.replace(/\%20/g, '%2520'); // #3

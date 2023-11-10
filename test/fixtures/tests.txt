@@ -12,11 +12,39 @@ Section text.
 </div></ContentSection>
 .
 
-Replace relative paths
+Replace relative paths - nested page
 .
 ## Section heading
 
 ![Image description.](../../../../.vuepress/public/images/tourdiaries/tour-name/leg-name/01/image.jpg "Image caption.")
+
+Section text.
+.
+<ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image.jpg'}]"><h2>Section heading</h2>
+</Gallery><div class="entry-content"></p>
+<p>Section text.</p>
+</div></ContentSection>
+.
+
+Replace relative paths 2 - root page A
+.
+## Section heading
+
+![Image description.](.vuepress/public/images/tourdiaries/tour-name/leg-name/01/image.jpg "Image caption.")
+
+Section text.
+.
+<ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image.jpg'}]"><h2>Section heading</h2>
+</Gallery><div class="entry-content"></p>
+<p>Section text.</p>
+</div></ContentSection>
+.
+
+Replace relative paths 3 - root page B
+.
+## Section heading
+
+![Image description.](/.vuepress/public/images/tourdiaries/tour-name/leg-name/01/image.jpg "Image caption.")
 
 Section text.
 .
