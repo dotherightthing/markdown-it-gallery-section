@@ -30,15 +30,15 @@ Code based on <https://github.com/amokrushin/markdown-it-gallery>.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | options | <code>object</code> |  | Instance options |
-| [options.contentWrapperClass] | <code>string</code> | <code>&quot;entry-content&quot;</code> | CSS class hook for styling the content following the gallery |
-| [options.contentWrapperTag] | <code>string</code> | <code>&quot;div&quot;</code> | Tag name (or name of the Vue component, authored separately) |
+| [options.contentWrapperClass=] | <code>string</code> |  | CSS class hook for styling the content following the gallery |
+| [options.contentWrapperTag] | <code>string</code> | <code>&quot;EntryContent&quot;</code> | Tag name (or name of the Vue component, authored separately & globally registered in enhanceApp.js) |
 | [options.galleryClass=] | <code>string</code> |  | CSS class hook for styling the gallery |
-| [options.galleryTag] | <code>string</code> | <code>&quot;Gallery&quot;</code> | Tag name (or name of the Vue component, authored separately) |
+| [options.galleryTag] | <code>string</code> | <code>&quot;Gallery&quot;</code> | Tag name (or name of the Vue component, authored separately & globally registered in enhanceApp.js) |
 | [options.headingLevel] | <code>string</code> | <code>&quot;h2&quot;</code> | Heading Level which appears before a sequence of images) |
 | [options.imagePathOld] | <code>string</code> | <code>&quot;/.vuepress/public/images&quot;</code> | Root relative directory path to images folder (within site folder) |
 | [options.imagePathNew] | <code>string</code> | <code>&quot;/images&quot;</code> | Root relative server path to images folder |
 | [options.sectionClass=] | <code>string</code> |  | CSS class hook for styling the section |
-| [options.sectionTag] | <code>string</code> | <code>&quot;ContentSection&quot;</code> | Tag name (or name of the Vue component, authored separately) |
+| [options.sectionTag] | <code>string</code> | <code>&quot;ContentSection&quot;</code> | Tag name (or name of the Vue component, authored separately & globally registered in enhanceApp.js) |
 
 
 ### Example (Vuepress)
@@ -79,6 +79,24 @@ export default {
   props: {
     headingContent: String
   }
+}
+</script>
+```
+
+```vue
+// .vuepress/components/EntryContent.vue (simplified example)
+
+<template>
+  <div
+    class="entry-content"
+  >
+    <slot />
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'EntryContent'
 }
 </script>
 ```

@@ -8,23 +8,23 @@
  * @class GalleryPlugin
  * @summary Injects Vue gallery scaffolding into markdown and transforms file-relative image paths to server-root-relative image paths
  * @param {object} options - Instance options
- * @param {string} [options.contentWrapperClass=entry-content] - CSS class hook for styling the content following the gallery
- * @param {string} [options.contentWrapperTag=div] - Tag name (or name of the Vue component, authored separately)
+ * @param {string} [options.contentWrapperClass=] - CSS class hook for styling the content following the gallery
+ * @param {string} [options.contentWrapperTag=EntryContent] - Tag name (or name of the Vue component, authored separately & globally registered in enhanceApp.js)
  * @param {string} [options.galleryClass=] - CSS class hook for styling the gallery
- * @param {string} [options.galleryTag=Gallery] - Tag name (or name of the Vue component, authored separately)
+ * @param {string} [options.galleryTag=Gallery] - Tag name (or name of the Vue component, authored separately & globally registered in enhanceApp.js)
  * @param {string} [options.headingLevel=h2] - Heading Level which appears before a sequence of images)
  * @param {string} [options.imagePathOld=/.vuepress/public/images] - Root relative directory path to images folder (within site folder)
  * @param {string} [options.imagePathNew=/images] - Root relative server path to images folder
  * @param {string} [options.sectionClass=] - CSS class hook for styling the section
- * @param {string} [options.sectionTag=ContentSection] - Tag name (or name of the Vue component, authored separately)
+ * @param {string} [options.sectionTag=ContentSection] - Tag name (or name of the Vue component, authored separately & globally registered in enhanceApp.js)
  * @public
  */
 class GalleryPlugin {
     constructor(md, options) {
         this.md = md;
         this.options = Object.assign({
-            contentWrapperClass: 'entry-content',
-            contentWrapperTag: 'div',
+            contentWrapperClass: '',
+            contentWrapperTag: 'EntryContent',
             galleryClass: '',
             galleryTag: 'Gallery',
             headingLevel: 'h2',

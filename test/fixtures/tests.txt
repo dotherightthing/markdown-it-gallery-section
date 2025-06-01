@@ -7,9 +7,9 @@ Re-encode encoded space in filename
 Section text.
 .
 <ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image%2520-%2520cropped.jpg'}]"><h2>Section heading</h2>
-</Gallery><div class="entry-content"></p>
+</Gallery><EntryContent class=""></p>
 <p>Section text.</p>
-</div></ContentSection>
+</EntryContent></ContentSection>
 .
 
 Replace relative paths - nested page
@@ -21,9 +21,9 @@ Replace relative paths - nested page
 Section text.
 .
 <ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image.jpg'}]"><h2>Section heading</h2>
-</Gallery><div class="entry-content"></p>
+</Gallery><EntryContent class=""></p>
 <p>Section text.</p>
-</div></ContentSection>
+</EntryContent></ContentSection>
 .
 
 Replace relative paths 2 - root page A
@@ -35,9 +35,9 @@ Replace relative paths 2 - root page A
 Section text.
 .
 <ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image.jpg'}]"><h2>Section heading</h2>
-</Gallery><div class="entry-content"></p>
+</Gallery><EntryContent class=""></p>
 <p>Section text.</p>
-</div></ContentSection>
+</EntryContent></ContentSection>
 .
 
 Replace relative paths 3 - root page B
@@ -49,9 +49,9 @@ Replace relative paths 3 - root page B
 Section text.
 .
 <ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image.jpg'}]"><h2>Section heading</h2>
-</Gallery><div class="entry-content"></p>
+</Gallery><EntryContent class=""></p>
 <p>Section text.</p>
-</div></ContentSection>
+</EntryContent></ContentSection>
 .
 
 Encode focalpoint-multi-cropper suffix
@@ -63,9 +63,9 @@ Encode focalpoint-multi-cropper suffix
 Section text.
 .
 <ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image__%5B25%25,75%25%5D.jpg'}]"><h2>Section heading</h2>
-</Gallery><div class="entry-content"></p>
+</Gallery><EntryContent class=""></p>
 <p>Section text.</p>
-</div></ContentSection>
+</EntryContent></ContentSection>
 .
 
 Handle two images
@@ -78,10 +78,10 @@ Handle two images
 Section text.
 .
 <ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image 1 description.',caption:'Image 1 caption.',extraAttributes:{},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image-1.jpg'},{alt:'Image 2 description.',caption:'Image 2 caption.',extraAttributes:{},id:1,src:'/images/tourdiaries/tour-name/leg-name/01/image-2.jpg'}]"><h2>Section heading</h2>
-</Gallery><div class="entry-content">
+</Gallery><EntryContent class="">
 </p>
 <p>Section text.</p>
-</div></ContentSection>
+</EntryContent></ContentSection>
 .
 
 Generate extraAttributes for panorama
@@ -93,7 +93,7 @@ Generate extraAttributes for panorama
 Section text.
 .
 <ContentSection class="" headingContent="Section heading"><Gallery class="" id="0" :images="[{alt:'Image description.',caption:'Image caption.',extraAttributes:{panorama:'true'},id:0,src:'/images/tourdiaries/tour-name/leg-name/01/image.jpg'}]"><h2>Section heading</h2>
-</Gallery><div class="entry-content"></p>
+</Gallery><EntryContent class=""></p>
 <p>Section text.</p>
-</div></ContentSection>
+</EntryContent></ContentSection>
 .

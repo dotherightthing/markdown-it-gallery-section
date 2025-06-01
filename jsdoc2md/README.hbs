@@ -62,6 +62,24 @@ export default {
 ```
 
 ```vue
+// .vuepress/components/EntryContent.vue (simplified example)
+
+<template>
+  <div
+    class="entry-content"
+  >
+    <slot />
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'EntryContent'
+}
+</script>
+```
+
+```vue
 // .vuepress/components/Gallery.vue (simplified example)
 
 <template>
